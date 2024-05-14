@@ -12,6 +12,13 @@ M.general = {
     --custom
     ["<C-c>"] = { "<ESC>" },
 
+    --unbind arrows
+    ["<Down>"] = { '<NOP>' },
+    ["<Left>"] = { '<NOP>' },
+    ["<Right>"] = { '<NOP>' },
+    ["<Up>"] = { '<NOP>' },
+
+
     ["<C-b>"] = { "<ESC>^i", "Beginning of line" },
     ["<C-e>"] = { "<End>", "End of line" },
 
@@ -23,13 +30,15 @@ M.general = {
   },
 
   n = {
-    --center screen while scrolling
-    ["<C-d>"] = {"<C-d>zz"},
-    ["<C-u>"] = {"<C-u>zz"},
+    ["<leader>s"] = { [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]] },
 
-     --center screen while searching
-    ["n"] = {"nzzzv"},
-    ["N"] = {"Nzzzv"},
+    --center screen while scrolling
+    ["<C-d>"] = { "<C-d>zz" },
+    ["<C-u>"] = { "<C-u>zz" },
+
+    --center screen while searching
+    ["n"] = { "nzzzv" },
+    ["N"] = { "Nzzzv" },
 
     --unbind arrows
     ["<Down>"] = { '<NOP>' },
@@ -58,9 +67,7 @@ M.general = {
     -- also don't use g[j|k] when in operator pending mode, so it doesn't alter d, y or c behaviour
     ["j"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "Move down", opts = { expr = true } },
     ["k"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "Move up", opts = { expr = true } },
-    -- ["<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "Move up", opts = { expr = true } },
-    -- ["<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "Move down", opts = { expr = true } },
-    --
+
     -- new buffer
     ["<leader>b"] = { "<cmd> enew <CR>", "New buffer" },
     ["<leader>ch"] = { "<cmd> NvCheatsheet <CR>", "Mapping cheatsheet" },
@@ -78,10 +85,20 @@ M.general = {
   },
 
   v = {
-    -- ["<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "Move up", opts = { expr = true } },
-    -- ["<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "Move down", opts = { expr = true } },
+    --unbind arrows
+    ["<Down>"] = { '<NOP>' },
+    ["<Left>"] = { '<NOP>' },
+    ["<Right>"] = { '<NOP>' },
+    ["<Up>"] = { '<NOP>' },
+
+
+    ["<C-d>"] = { "<C-d>zz" },
+    ["<C-u>"] = { "<C-u>zz" },
+
     ["<"] = { "<gv", "Indent line" },
     [">"] = { ">gv", "Indent line" },
+
+
   },
 
   x = {
@@ -212,7 +229,7 @@ M.lspconfig = {
       "LSP references",
     },
 
-    ["<leader>q"] = {
+    ["<leader>a"] = {
       function()
         vim.diagnostic.open_float { border = "rounded" }
       end,
@@ -289,25 +306,25 @@ M.telescope = {
 
   n = {
     -- find
-    ["<leader>ff"] = { "<cmd> Telescope find_files <CR>", "Find files" },
-    ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "Find all" },
-    ["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", "Live grep" },
-    ["<leader>fb"] = { "<cmd> Telescope buffers <CR>", "Find buffers" },
-    ["<leader>fh"] = { "<cmd> Telescope help_tags <CR>", "Help page" },
-    ["<leader>fo"] = { "<cmd> Telescope oldfiles <CR>", "Find oldfiles" },
-    ["<leader>fz"] = { "<cmd> Telescope current_buffer_fuzzy_find <CR>", "Find in current buffer" },
+    ["<leader>ff"] = { "<cmd> Telescope find_files <cr>", "find files" },
+    ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <cr>", "find all" },
+    ["<leader>fw"] = { "<cmd> Telescope live_grep <cr>", "live grep" },
+    ["<leader>fb"] = { "<cmd> Telescope buffers <cr>", "find buffers" },
+    ["<leader>fh"] = { "<cmd> Telescope help_tags <cr>", "help page" },
+    ["<leader>fo"] = { "<cmd> Telescope oldfiles <cr>", "find oldfiles" },
+    ["<leader>fz"] = { "<cmd> Telescope current_buffer_fuzzy_find <cr>", "find in current buffer" },
 
     -- git
-    ["<leader>cm"] = { "<cmd> Telescope git_commits <CR>", "Git commits" },
-    ["<leader>gt"] = { "<cmd> Telescope git_status <CR>", "Git status" },
+    ["<leader>cm"] = { "<cmd> Telescope git_commits <cr>", "git commits" },
+    ["<leader>gt"] = { "<cmd> Telescope git_status <cr>", "git status" },
 
     -- pick a hidden term
-    ["<leader>pt"] = { "<cmd> Telescope terms <CR>", "Pick hidden term" },
+    ["<leader>pt"] = { "<cmd> Telescope terms <cr>", "pick hidden term" },
 
     -- theme switcher
-    ["<leader>th"] = { "<cmd> Telescope themes <CR>", "Nvchad themes" },
+    ["<leader>th"] = { "<cmd> Telescope themes <cr>", "nvchad themes" },
 
-    ["<leader>ma"] = { "<cmd> Telescope marks <CR>", "telescope bookmarks" },
+    ["<leader>ma"] = { "<cmd> Telescope marks <cr>", "telescope bookmarks" },
   },
 }
 
