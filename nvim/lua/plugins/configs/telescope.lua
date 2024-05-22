@@ -11,8 +11,6 @@ local options = {
       "--smart-case",
     },
     prompt_prefix = "   ",
-    selection_caret = "  ",
-    entry_prefix = "  ",
     initial_mode = "insert",
     selection_strategy = "reset",
     sorting_strategy = "ascending",
@@ -31,7 +29,7 @@ local options = {
       preview_cutoff = 120,
     },
     file_sorter = require("telescope.sorters").get_fuzzy_file,
-    file_ignore_patterns = { "node_modules" },
+    file_ignore_patterns = { "node_modules", "__pycache__" },
     generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
     path_display = { "truncate" },
     winblend = 0,
@@ -46,6 +44,12 @@ local options = {
     buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
     mappings = {
       n = { ["q"] = require("telescope.actions").close },
+
+      i = {
+        ["<C-k>"] = require("telescope.actions").move_selection_previous,
+        ["<C-j>"] = require("telescope.actions").move_selection_next,
+        ["<Tab>"] = require("telescope.actions").select_default,
+      },
     },
   },
 
