@@ -43,23 +43,5 @@ local plugins = {
       return opts
     end,
   },
-  {
-    "nvim-telescope/telescope.nvim",
-    config = function()
-      local actions = require("telescope.actions")
-      require('telescope').setup {
-        defaults = {
-          sorting_strategy = 'ascending',
-          mappings = {
-            i = {
-              ["<C-k>"] = actions.move_selection_previous,
-              ["<C-j>"] = actions.move_selection_next,
-              ["<Tab>"] = actions.select_default,
-            },
-          },
-        },
-      }
-    end,
-  },
 }
 return plugins
