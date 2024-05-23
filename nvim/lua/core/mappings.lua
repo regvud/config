@@ -311,8 +311,8 @@ M.telescope = {
     ["<leader>fw"] = { "<cmd> Telescope live_grep <cr>", "live grep" },
     ["<leader>fb"] = { "<cmd> Telescope buffers <cr>", "find buffers" },
     ["<leader>fh"] = { "<cmd> Telescope help_tags <cr>", "help page" },
-    ["<leader>fo"] = { "<cmd> Telescope oldfiles <cr>", "find oldfiles" },
-    ["<leader>fz"] = { "<cmd> Telescope current_buffer_fuzzy_find <cr>", "find in current buffer" },
+    ["<leader>fz"] = { "<cmd> Telescope oldfiles <cr>", "find oldfiles" },
+    ["<leader>/"] = { "<cmd> Telescope current_buffer_fuzzy_find <cr>", "find in current buffer" },
 
     -- git
     ["<leader>cm"] = { "<cmd> Telescope git_commits <cr>", "git commits" },
