@@ -2,11 +2,6 @@
 
 local M = {}
 
---custom
-
--- Define a custom command to format JSON using jq
--- vim.cmd([[command! -buffer -range=% Jq <line1>,<line2>!jq '.']])
-
 M.general = {
   i = {
     --custom
@@ -85,6 +80,7 @@ M.general = {
   },
 
   v = {
+
     --unbind arrows
     ["<Down>"] = { '<NOP>' },
     ["<Left>"] = { '<NOP>' },
@@ -97,8 +93,6 @@ M.general = {
 
     ["<"] = { "<gv", "Indent line" },
     [">"] = { ">gv", "Indent line" },
-
-
   },
 
   x = {
@@ -141,23 +135,6 @@ M.tabufline = {
 
 M.comment = {
   plugin = true,
-
-  -- toggle comment in both modes
-  n = {
-    ["<C-_>"] = {
-      function()
-        require("Comment.api").toggle.linewise.current()
-      end,
-      "Toggle comment",
-    },
-  },
-
-  v = {
-    ["<C-_>"] = {
-      "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
-      "Toggle comment",
-    },
-  },
 }
 
 M.lspconfig = {
@@ -176,6 +153,9 @@ M.lspconfig = {
     ["gd"] = {
       function()
         vim.lsp.buf.definition()
+        vim.defer_fn(function()
+          vim.cmd('normal! zz')
+        end, 5)
       end,
       "LSP definition",
     },
