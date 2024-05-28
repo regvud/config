@@ -5,6 +5,15 @@ local custom_init_path = vim.api.nvim_get_runtime_file("lua/custom/init.lua", fa
 -- relativenumbers
 vim.wo.relativenumber = true
 
+--optimised quickfix
+vim.cmd[[
+augroup nvchad_autocmds
+  autocmd!
+  autocmd FileType qf nnoremap <buffer> <leader><Enter> <C-w><Enter><C-w>L
+augroup END
+]]
+
+
 if custom_init_path then
   dofile(custom_init_path)
 end
@@ -21,4 +30,5 @@ end
 
 dofile(vim.g.base46_cache .. "defaults")
 vim.opt.rtp:prepend(lazypath)
+
 require "plugins"
