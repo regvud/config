@@ -13,6 +13,8 @@ M.general = {
     ["<Right>"] = { '<NOP>' },
     ["<Up>"] = { '<NOP>' },
 
+    ["<C-n>"] = { '<NOP>' },
+    ["<C-p>"] = { '<NOP>' },
 
     ["<C-b>"] = { "<ESC>^i", "Beginning of line" },
     ["<C-e>"] = { "<End>", "End of line" },
